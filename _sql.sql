@@ -8,7 +8,7 @@ CREATE TABLE [GiaoVien]
   [Id] Int NOT NULL,
   [IdBoMon] Int NULL,
   [HoTen] Nvarchar(200) NULL,
-  [NgaySinh] Datetime NULL,
+  [NgaySinh] Date NULL,
   [SDT] Varchar(20) NULL,
   [GioiTinh] Int NULL,
   [Email] Varchar(100) NULL,
@@ -35,7 +35,7 @@ CREATE TABLE [GiaoVien_DonVi]
   [IdGiaoVien] Int NOT NULL,
   [IdDonVi] Int NOT NULL,
   [DiaDiem] Nvarchar(200) NULL,
-  [ThoIdiemNhan] Datetime NULL,
+  [ThoiDiemNhan] Date NULL,
 
     CONSTRAINT [PK_GiaoVien_DonVi_MY] PRIMARY KEY CLUSTERED 
     (
@@ -100,7 +100,7 @@ CREATE TABLE [GiaoVien_HocVi]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdHocVi] Int NOT NULL,
-  [ThoIdiemNhan] Datetime NULL,
+  [ThoiDiemNhan] Date NULL,
 
     CONSTRAINT [PK_GiaoVien_HocVi_MY] PRIMARY KEY CLUSTERED 
     (
@@ -165,7 +165,7 @@ CREATE TABLE [GiaoVien_CVChinhQuyen]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdChucVu] Int NOT NULL,
-  [ThoIdiemNhan] Date NULL,
+  [ThoiDiemNhan] Date NULL,
   [ThoIdiemKetThuc] Date NULL,
 
     CONSTRAINT [PK_GiaoVien_CVChinhQuyen_MY] PRIMARY KEY CLUSTERED 
@@ -189,7 +189,7 @@ CREATE TABLE [GiaoVien_CVDang]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdChucVu] Int NOT NULL,
-  [ThoIdiemNhan] Date NULL,
+  [ThoiDiemNhan] Date NULL,
 
     CONSTRAINT [PK_GiaoVien_CVDang_MY] PRIMARY KEY CLUSTERED 
     (
@@ -259,7 +259,7 @@ CREATE TABLE [GiaoVien_HocHam]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdHocHam] Int NOT NULL,
-  [ThoIdiemNhan] Datetime NULL,
+  [ThoiDiemNhan] Date NULL,
   [DiaDiem] Nvarchar(200) NULL,
 
     CONSTRAINT [PK_GiaoVien_HocHam_MY] PRIMARY KEY CLUSTERED 
@@ -325,7 +325,7 @@ CREATE TABLE [GiaoVien_CDNghienCuu]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdCDNghienCuu] Int NOT NULL,
-  [ThoIdiemNhan] Datetime NULL,
+  [ThoiDiemNhan] Date NULL,
   [DiaDiem] Nvarchar(200) NULL,
 
     CONSTRAINT [PK_GiaoVien_CDNghienCuu_MY] PRIMARY KEY CLUSTERED 
@@ -349,7 +349,7 @@ CREATE TABLE [GiaoVien_CDNhaGiao]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdCDNhaGiao] Int NOT NULL,
-  [ThoIdiemNhan] Datetime NULL,
+  [ThoiDiemNhan] Date NULL,
   [DiaDiem] Nvarchar(200) NULL,
 
     CONSTRAINT [PK_GiaoVien_CDNhaGiao_MY] PRIMARY KEY CLUSTERED 
@@ -444,7 +444,7 @@ CREATE TABLE [GiaoVien_CapBac]
 (
   [IdGiaoVien] Int NOT NULL,
   [IdCapBac] Int NOT NULL,
-  [ThoIdiemNhan] Date NULL,
+  [ThoiDiemNhan] Date NULL,
   [DiaDiem] Nvarchar(200) NULL,
 
     CONSTRAINT [PK_GiaoVien_CapBac_MY] PRIMARY KEY CLUSTERED 
@@ -513,8 +513,8 @@ CREATE TABLE [HocKy]
   [Id_HocKy] varchar(10) NOT NULL,
   [code] varchar(30) NULL,
   [Ten] nvarchar(100) NULL,
-  [NgayBatDau] datetime NULL,
-  [NgayKetThuc] datetime NULL,
+  [NgayBatDau] Date NULL,
+  [NgayKetThuc] Date NULL,
   [NamHoc] varchar(30) NULL,
 
     CONSTRAINT [PK_HocKy_MY] PRIMARY KEY CLUSTERED 
@@ -737,8 +737,8 @@ CREATE TABLE [DoAn]
   [Id_DoAn] varchar(10) NOT NULL,
   [Code] varchar(30) NULL,
   [SVThucHien] nvarchar(200) NULL,
-  [NgayBatDau] datetime NULL,
-  [NgayKetThuc] datetime NULL,
+  [NgayBatDau] Date NULL,
+  [NgayKetThuc] Date NULL,
   [Id_QuyDoiTHi] varchar(10) NULL,
   [Id_GiaoVien] varchar(10) NULL,
   [GhiChu] nvarchar(200) NULL,
