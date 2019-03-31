@@ -510,7 +510,7 @@ GO
 -------------
 CREATE TABLE [HocKy]
 (
-  [Id_HocKy] varchar(10) NOT NULL,
+  [Id_HocKy] int NOT NULL,
   [code] varchar(30) NULL,
   [Ten] nvarchar(100) NULL,
   [NgayBatDau] Date NULL,
@@ -535,14 +535,14 @@ GO
 -------------
 CREATE TABLE [HocPhan]
 (
-  [Id_HocPhan] varchar(10) NOT NULL,
+  [Id_HocPhan] int NOT NULL,
   [ten] nvarchar(100) NULL,
   [code] varchar(30) NULL,
   [SoTietLT] int NULL,
   [SoTietBT] int NULL,
   [SoTietTH] int NULL,
   [SoTinChi] int NULL,
-  [Id_BoMon] varchar(10) NULL,
+  [Id_BoMon] int NULL,
 
     CONSTRAINT [PK_HocPhan_MY] PRIMARY KEY CLUSTERED 
     (
@@ -555,29 +555,6 @@ GO
 GO
 
 
------------------begin ChiTietHeGiangDay--------------------
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ChiTietHeGiangDay]') AND type in (N'U'))
-DROP TABLE [dbo].[ChiTietHeGiangDay]
-GO
--------------
-CREATE TABLE [ChiTietHeGiangDay]
-(
-  [Id_ChiTietHeGiangDay] varchar(10) NOT NULL,
-  [Id_HocPhan] varchar(10) NULL,
-  [Id_HeGiangDay] varchar(10) NULL,
-  [GhiChu] nvarchar(200) NULL,
-
-    CONSTRAINT [PK_ChiTietHeGiangDay_MY] PRIMARY KEY CLUSTERED 
-    (
-        [Id_ChiTietHeGiangDay] ASC
-
-    ) ON [PRIMARY]
-)
-GO 
------------------end ChiTietHeGiangDay--------------------
-GO
-
-
 -----------------begin HeGiangDay--------------------
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[HeGiangDay]') AND type in (N'U'))
 DROP TABLE [dbo].[HeGiangDay]
@@ -585,7 +562,7 @@ GO
 -------------
 CREATE TABLE [HeGiangDay]
 (
-  [Id_HeGiangDay] varchar(10) NOT NULL,
+  [Id_HeGiangDay] int NOT NULL,
   [code] varchar(100) NULL,
   [Ten] nvarchar(100) NULL,
   [GhiChu] nvarchar(200) NULL,
@@ -608,10 +585,10 @@ GO
 -------------
 CREATE TABLE [LopHocPhan]
 (
-  [Id_LopHocPHan] varchar(10) NOT NULL,
-  [Id_HocKy] varchar(10) NULL,
-  [ID_HocPhan] varchar(10) NULL,
-  [ID_QuyDoiThi] varchar(10) NULL,
+  [Id_LopHocPHan] int NOT NULL,
+  [Id_HocKy] int NULL,
+  [ID_HocPhan] int NULL,
+  [ID_QuyDoiThi] int NULL,
   [Code] varchar(30) NULL,
   [Ten] nvarchar(100) NULL,
   [SiSo] int NULL,
@@ -635,9 +612,9 @@ GO
 -------------
 CREATE TABLE [QuyDoIdayHocPhanCT]
 (
-  [Id_QuyDoIdayHocPhanCT] varchar(10) NOT NULL,
-  [Id_LopHocPHan] varchar(10) NULL,
-  [Id_QuyDoiThi] varchar(10) NULL,
+  [Id_QuyDoIdayHocPhanCT] int NOT NULL,
+  [Id_LopHocPHan] int NULL,
+  [Id_QuyDoiDayHoc] int NULL,
   [GhiChu] nvarchar(200) NULL,
 
     CONSTRAINT [PK_QuyDoIdayHocPhanCT_MY] PRIMARY KEY CLUSTERED 
@@ -658,7 +635,7 @@ GO
 -------------
 CREATE TABLE [QuyDoiThi]
 (
-  [Id_QuyDoiThy] varchar(10) NOT NULL,
+  [Id_QuyDoiThy] int NOT NULL,
   [Code] varchar(30) NULL,
   [Ten] nvarchar(100) NULL,
   [DonViTinh] decimal(10,2) NULL,
@@ -683,7 +660,7 @@ GO
 -------------
 CREATE TABLE [QuyDoIdayHoc]
 (
-  [Id_QuyDoIdayHoc] varchar(10) NOT NULL,
+  [Id_QuyDoIdayHoc] int NOT NULL,
   [Code] varchar(30) NULL,
   [DonViTinh] decimal(10,2) NULL,
   [ChiTiet] tinyint NULL,
@@ -708,13 +685,13 @@ GO
 -------------
 CREATE TABLE [QuyDoIdayHocCT]
 (
-  [Id_QuyDoIdayHocCT] varchar(10) NOT NULL,
+  [Id_QuyDoIdayHocCT] int NOT NULL,
   [Code] varchar(30) NULL,
   [MucThap] decimal(10,2) NULL,
   [MucCao] decimal(10,2) NULL,
   [HeSo] decimal(10,2) NULL,
   [GhiChu] nvarchar(200) NULL,
-  [Id_QuyDoIdayHoc] varchar(10) NULL,
+  [Id_QuyDoIdayHoc] int NULL,
 
     CONSTRAINT [PK_QuyDoIdayHocCT_MY] PRIMARY KEY CLUSTERED 
     (
@@ -734,13 +711,13 @@ GO
 -------------
 CREATE TABLE [DoAn]
 (
-  [Id_DoAn] varchar(10) NOT NULL,
+  [Id_DoAn] int NOT NULL,
   [Code] varchar(30) NULL,
   [SVThucHien] nvarchar(200) NULL,
   [NgayBatDau] Date NULL,
   [NgayKetThuc] Date NULL,
-  [Id_QuyDoiTHi] varchar(10) NULL,
-  [Id_GiaoVien] varchar(10) NULL,
+  [Id_QuyDoiTHi] int NULL,
+  [Id_GiaoVien] int NULL,
   [GhiChu] nvarchar(200) NULL,
 
     CONSTRAINT [PK_DoAn_MY] PRIMARY KEY CLUSTERED 
@@ -761,14 +738,14 @@ GO
 -------------
 CREATE TABLE [DayHoc]
 (
-  [Id_DayHoc] varchar(10) NOT NULL,
-  [Id_GiaoVien] varchar(10) NULL,
+  [Id_DayHoc] int NOT NULL,
+  [Id_GiaoVien] int NULL,
   [SoTietLiThuyet] int NULL,
   [SoTietThucHanh] int NULL,
   [SoTietBaiTap] int NULL,
-  [VaiTro] nvarchar(30) NULL,
+  [ID_VaiTro] int NULL,
   [SoBTL] int NULL,
-  [Id_LopHocPhan] varchar(10) NULL,
+  [Id_LopHocPhan] int NULL,
 
     CONSTRAINT [PK_DayHoc_MY] PRIMARY KEY CLUSTERED 
     (
@@ -788,20 +765,20 @@ GO
 -------------
 CREATE TABLE [ChamThi]
 (
-  [Id_ChamThi] varchar(10) NOT NULL,
-  [Id_GiaoVien] varchar(10) NULL,
+  [Id_ChamThi] int NOT NULL,
+  [Id_GiaoVien] int NULL,
   [SoBai] int NULL,
-  [VaiTro] nvarchar(30) NULL,
-  [Id_LopHocPhan] varchar(10) NULL,
+  [ID_VaiTro] int NULL,
+  [Id_LopHocPhan] int NULL,
 
-    CONSTRAINT [PK_Ch_MY] PRIMARY KEY CLUSTERED 
+    CONSTRAINT [PK_ChamThi_MY] PRIMARY KEY CLUSTERED 
     (
         [Id_ChamThi] ASC
 
     ) ON [PRIMARY]
 )
 GO 
------------------end Ch--------------------
+-----------------end ChamThi--------------------
 GO
 
 
@@ -861,7 +838,7 @@ CREATE TABLE [GV_BaiBao]
 (
   [ID_BaoCao] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_BaiBao_MY] PRIMARY KEY CLUSTERED 
     (
@@ -907,7 +884,7 @@ CREATE TABLE [GV_DeTaiKH]
 (
   [ID_DeTaiKH] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_DeTaiKH_MY] PRIMARY KEY CLUSTERED 
     (
@@ -953,7 +930,7 @@ CREATE TABLE [GV_Sach]
 (
   [ID_Sach] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_Sach_MY] PRIMARY KEY CLUSTERED 
     (
@@ -999,7 +976,7 @@ CREATE TABLE [GV_ThiNhiem]
 (
   [ID_ThiNhiem] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_ThiNhiem_MY] PRIMARY KEY CLUSTERED 
     (
@@ -1045,7 +1022,7 @@ CREATE TABLE [GV_CongNghe]
 (
   [ID_CongNghe] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_CongNghe_MY] PRIMARY KEY CLUSTERED 
     (
@@ -1091,7 +1068,7 @@ CREATE TABLE [GV_SangKien]
 (
   [ID_CongNghe] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_GV_SangKien_MY] PRIMARY KEY CLUSTERED 
     (
@@ -1137,7 +1114,7 @@ CREATE TABLE [Gv_GiaiThuongSt]
 (
   [ID_GiaiThuong] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_Gv_GiaiThuongSt_MY] PRIMARY KEY CLUSTERED 
     (
@@ -1183,7 +1160,7 @@ CREATE TABLE [Gv_BangPhatMinh]
 (
   [ID_PhatMinh] int NOT NULL,
   [ID_GiaoVien] int NOT NULL,
-  [VaiTro] Varchar(20) NULL,
+  [ID_VaiTro] int NULL,
 
     CONSTRAINT [PK_Gv_BangPhatMinh_MY] PRIMARY KEY CLUSTERED 
     (
@@ -1194,6 +1171,29 @@ CREATE TABLE [Gv_BangPhatMinh]
 )
 GO 
 -----------------end Gv_BangPhatMinh--------------------
+GO
+
+
+-----------------begin VaiTro--------------------
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[VaiTro]') AND type in (N'U'))
+DROP TABLE [dbo].[VaiTro]
+GO
+-------------
+CREATE TABLE [VaiTro]
+(
+  [ID_VaiTro] int NOT NULL,
+  [TenVaiTro] Nvarchar(200) NULL,
+  [Type] Nvarchar(200) NULL,
+  [DinhMuc] decimal(10, 2) NULL,
+
+    CONSTRAINT [PK_VaiTro_MY] PRIMARY KEY CLUSTERED 
+    (
+        [ID_VaiTro] ASC
+
+    ) ON [PRIMARY]
+)
+GO 
+-----------------end VaiTro--------------------
 GO
 
 
