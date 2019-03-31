@@ -781,12 +781,12 @@ GO
 GO
 
 
------------------begin Ch--------------------
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Ch]') AND type in (N'U'))
-DROP TABLE [dbo].[Ch]
+-----------------begin ChamThi--------------------
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ChamThi]') AND type in (N'U'))
+DROP TABLE [dbo].[ChamThi]
 GO
 -------------
-CREATE TABLE [Ch]
+CREATE TABLE [ChamThi]
 (
   [Id_ChamThi] varchar(10) NOT NULL,
   [Id_GiaoVien] varchar(10) NULL,
